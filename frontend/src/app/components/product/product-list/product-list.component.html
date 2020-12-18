@@ -1,5 +1,5 @@
 <div class="mat-elevation-z8">
-    <table mat-table [dataSource]="products">
+    <table *ngIf="showTable" mat-table [dataSource]="products">
         
         <!-- Id Column -->
         <ng-container matColumnDef="id">
