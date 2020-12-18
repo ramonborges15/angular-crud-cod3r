@@ -27,6 +27,7 @@ import { MatTableModule } from '@angular/material/table';
 
 import localePt from '@angular/common/locales/pt';
 import { registerLocaleData } from  '@angular/common';
+import { ProductEditComponent } from './components/product/product-edit/product-edit.component';
 
 registerLocaleData(localePt);
 
@@ -39,7 +40,8 @@ registerLocaleData(localePt);
     HomeComponent,
     ProductCrudComponent,
     ProductCreateComponent,
-    ProductListComponent
+    ProductListComponent,
+    ProductEditComponent
   ],
   imports: [
     BrowserModule,
