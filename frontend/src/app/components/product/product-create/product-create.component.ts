@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProductService } from '../../product.service';
 import { Product } from '../product.model';
@@ -10,13 +11,19 @@ import { Product } from '../product.model';
 })
 export class ProductCreateComponent implements OnInit {
 
+  productFormGroup: FormGroup;
+
   product: Product = {
     name: '',
     price: 0
   }
 
-  constructor(private router: Router,
-    private productService: ProductService) { }
+  constructor(private router: Router, private formBuilder: FormBuilder, private productService: ProductService) {
+    this.productFormGroup = this.formBuilder.group({
+      nome: ['', Validators.required],
+      preco: ['', Validators.required]
+    });
+  }
 
   ngOnInit(): void {
   }
