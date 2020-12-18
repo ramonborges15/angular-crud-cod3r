@@ -36,8 +36,8 @@ export class ProductListComponent implements OnInit {
           this.router.navigate(['products'])
           .then(() => {
             window.location.reload();
-            this.productService.showMessage("Produto removido com sucesso!");
           })
+          this.productService.showMessage("Produto removido com sucesso!");
         })
       }
     });
