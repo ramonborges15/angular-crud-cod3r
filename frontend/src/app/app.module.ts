@@ -24,10 +24,12 @@ import { HttpClientModule } from  '@angular/common/http';
 import { MatSnackBarModule } from  '@angular/material/snack-bar';
 import { ProductListComponent } from './components/product/product-list/product-list.component';
 import { MatTableModule } from '@angular/material/table';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import localePt from '@angular/common/locales/pt';
 import { registerLocaleData } from  '@angular/common';
 import { ProductEditComponent } from './components/product/product-edit/product-edit.component';
+import { ProductDeleteComponent } from './components/product/product-delete/product-delete.component';
 
 registerLocaleData(localePt);
 
@@ -41,7 +43,8 @@ registerLocaleData(localePt);
     ProductCrudComponent,
     ProductCreateComponent,
     ProductListComponent,
-    ProductEditComponent
+    ProductEditComponent,
+    ProductDeleteComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +60,8 @@ registerLocaleData(localePt);
     MatInputModule,
     HttpClientModule,
     MatSnackBarModule,
-    MatTableModule
+    MatTableModule,
+    MatDialogModule
   ],
   providers: [
     {
