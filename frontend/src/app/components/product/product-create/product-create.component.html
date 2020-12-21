@@ -1,32 +1,25 @@
 <div class="container">
     <mat-card>
         <mat-card-title>Cadastrar Produto</mat-card-title>
-        <form [formGroup]="productFormGroup">
-            <mat-form-field>
-                <input  matInput 
-                        type="text"
-                        required="true"
-                        placeholder="Nome" 
-                        [(ngModel)]="product.name" 
-                        name="name"
-                        formControlName="nome">
-            </mat-form-field>
-            
-            <mat-form-field>
-                <input  matInput
-                        type="number" 
-                        min="0"
-                        max="10"
-                        step="1"
-                        placeholder="Preço" 
-                        [(ngModel)]="product.price" 
-                        name="price"
-                        formControlName="preco">
-            </mat-form-field>
+        <form [formGroup]="productFormGroup" (ngSubmit)="createProduct()">
+            <div class="formularioDiv">
+                <mat-form-field>
+                    <input matInput type="text" placeholder="Nome" name="name" formControlName="name">
+                    <mat-error>
+                        <strong>Nome</strong> é obrigatório
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput type="number" placeholder="Preço" name="price" formControlName="price">
+                    <mat-error>
+                        <strong>Preço</strong> é obrigatório
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <button type="submit" mat-raised-button color="primary">Salvar</button>
+            <button mat-raised-button (click)="cancel()">Cancelar</button>
         </form>
-
-        <button mat-raised-button color="primary" (click)="createProduct()">Salvar</button>
-        <button mat-raised-button (click)="cancel()">Cancelar</button>
-
     </mat-card>
 </div>

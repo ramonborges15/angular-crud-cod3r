@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProductService } from '../../product.service';
-import { Product } from '../product.model';
 
 @Component({
   selector: 'app-product-create',
@@ -13,26 +12,24 @@ export class ProductCreateComponent implements OnInit {
 
   productFormGroup: FormGroup;
 
-  product: Product = {
-    name: '',
-    price: 0
-  }
-
   constructor(private router: Router, private formBuilder: FormBuilder, private productService: ProductService) {
     this.productFormGroup = this.formBuilder.group({
-      nome: ['', Validators.required],
-      preco: ['', Validators.required]
+      name: [null, [Validators.required]],
+      price: [null, [Validators.required]]
     });
   }
-
+  
   ngOnInit(): void {
   }
 
   createProduct(): void {
-    this.productService.create(this.product).subscribe(() => {
-      this.productService.showMessage('Produto cadastrado com sucesso!');
-      this.router.navigate(['/products']);
-    })
+    if(this.productFormGroup.status == "VALID") {
+      this.productService.create(this.productFormGroup.value).subscribe(() => {
+        this.productService.showMessage('Produto cadastrado com sucesso!');
+        this.router.navigate(['/products']);
+        return;
+      })
+    }
   }
 
   cancel(): void {
