@@ -1,16 +1,22 @@
 <div class="container">
     <mat-card>
         <mat-card-title>Editar Produto</mat-card-title>
-        <form>
-            <mat-form-field>
-                <input matInput placeholder="Nome" 
-                [(ngModel)]="product.name" name="name">
-            </mat-form-field>
-            
-            <mat-form-field>
-                <input matInput placeholder="Preço" 
-                [(ngModel)]="product.price" name="price">
-            </mat-form-field>
+        <form [formGroup]="productFormGroup" (ngSubmit)="editProduct()">
+            <div class="formularioDiv">
+                <mat-form-field>
+                    <input matInput type="text" placeholder="Nome" formControlName="name" name="name">
+                    <mat-error *ngIf="this.productFormGroup.controls.name.hasError('required')">
+                        <strong>Nome</strong> é obrigatório.
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput type="number" placeholder="Preço" formControlName="price" name="price">
+                    <mat-error *ngIf="this.productFormGroup.controls.price.hasError('required')">
+                        <strong>Preço</strong> é obrigatório.
+                    </mat-error>
+                </mat-form-field>
+            </div>
         </form>
 
         <button mat-raised-button color="primary" (click)="editProduct()">Salvar</button>

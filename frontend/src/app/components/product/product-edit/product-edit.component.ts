@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../../product.service';
 import { HeaderComponent } from '../../template/header/header.component';
@@ -12,36 +13,45 @@ import { Product } from '../product.model';
 })
 export class ProductEditComponent implements OnInit {
 
-  product: Product = {
-    name: '',
-    price: 0
-  };
+  productFormGroup: FormGroup;
 
   constructor(
     private productService: ProductService,
     private route: ActivatedRoute,
     private router: Router,
-    private headerService: HeaderService
+    private headerService: HeaderService,
+    private formBuilder: FormBuilder
   ) {
     headerService.headerData = {
       title: 'Edição de Produtos',
       icon: 'edit',
       routeUrl: '/products'
     }
+
+    this.productFormGroup = this.formBuilder.group({
+      id: [],
+      name: [null, Validators.required],
+      price: [null, Validators.required]
+    });    
   }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get("id");
-    this.productService.readById(id).subscribe((product) => {
-      this.product = product;
+    this.productService.readById(id).subscribe(product => {
+      this.productFormGroup.setValue(product);
     });
   }
 
   editProduct(): void {
-    this.productService.update(this.product).subscribe(() => {
-      this.productService.showMessage('Produto editado com sucesso!')
-      this.router.navigate(['products'])
-    });
+    console.log("antes do valid");
+    
+    if (this.productFormGroup.status == "VALID") {
+      console.log("depois do valid");
+      this.productService.update(this.productFormGroup.value).subscribe(() => {
+        this.productService.showMessage('Produto editado com sucesso!')
+        this.router.navigate(['products'])
+      });
+    }
   }
 
   cancel(): void {
