@@ -1,0 +1,14 @@
+<div class="container">
+    <ul>
+        <li *ngFor="let product of products">
+            <mat-card class="mat-elevation-z8">
+                <img class="imagem-produto" mat-card-image src="https://cdn1.iconfinder.com/data/icons/dashboard-ui-vol-3-glyph/48/Sed-05-512.png" alt="Imagem do produto">
+                <mat-card-content>
+                    <p class="preco">R$ {{product.price}}</p>
+                    <p class="titulo-produto">{{product.name}}</p>
+                </mat-card-content>
+            </mat-card>
+            <br>
+        </li>
+    </ul>
+</div>

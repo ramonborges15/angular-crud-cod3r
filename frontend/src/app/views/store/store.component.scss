@@ -1,0 +1,60 @@
+.container {
+    position: relative;
+    width: 95%;  
+    margin: 0 auto; /*centraliza a div .caixa*/
+}
+
+.container ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+mat-card {
+    min-width: 200px;
+    max-width: 200px;
+    min-height: 240px;
+    max-height: 240px;
+}
+
+mat-card:hover {
+    border: 1px #f04864;;
+    border-style: solid;
+    transition: 350ms;
+
+    .preco{
+        font-weight: bolder;
+        font-size: 25px;
+        color: #f04864;
+        transition: 350ms;
+    }
+
+    .titulo-produto {
+        font-weight: 550;
+        font-size: 19px;
+        transition: 350ms;
+    }
+}
+
+li {
+    margin-right: 45px;
+    list-style-type: none;
+}
+
+.imagem-produto {
+    width: 150px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.preco {
+    font-weight: bolder;
+    font-size: 20px;
+    color: #501eaa;
+}
+
+.titulo-produto {
+    font-weight: 550;
+    font-size: 18px;
+}

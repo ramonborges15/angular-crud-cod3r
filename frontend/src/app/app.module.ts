@@ -31,6 +31,7 @@ import { registerLocaleData } from  '@angular/common';
 import { ProductEditComponent } from './components/product/product-edit/product-edit.component';
 import { ProductDeleteComponent } from './components/product/product-delete/product-delete.component';
 import { RedDirective } from './directives/red.directive';
+import { StoreComponent } from './views/store/store.component';
 
 registerLocaleData(localePt);
 
@@ -46,7 +47,8 @@ registerLocaleData(localePt);
     ProductListComponent,
     ProductEditComponent,
     ProductDeleteComponent,
-    RedDirective
+    RedDirective,
+    StoreComponent
   ],
   imports: [
     BrowserModule,
