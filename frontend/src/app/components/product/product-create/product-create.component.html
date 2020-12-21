@@ -16,6 +16,18 @@
                         <strong>Preço</strong> é obrigatório
                     </mat-error>
                 </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput type="text" placeholder="Descrição" name="description" formControlName="description">
+                    <mat-error>
+                        <strong>Descrição</strong> é obrigatório
+                    </mat-error>
+                </mat-form-field>
+
+                <label class="custom-file-upload">
+                    <input type="file"/>
+                    Carregar imagem
+                </label>
             </div>
 
             <button type="submit" mat-raised-button color="primary">Salvar</button>
